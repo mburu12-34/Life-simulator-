@@ -1,1 +1,58 @@
-*{box-sizing:border-box}body{margin:0;background:#0d1117;color:#f4f7fa;font-family:Arial,sans-serif}#app{max-width:760px;margin:auto;padding:18px}header{border-bottom:1px solid #29323d;padding:15px 0;margin-bottom:20px}header b{font-size:38px;letter-spacing:5px;display:block}header span{font-size:11px;color:#9da7b3;letter-spacing:2px}.card{background:#151b23;border:1px solid #29323d;border-radius:18px;padding:22px;margin-top:18px}.hero{text-align:center;padding:55px 20px}.hero h1{font-size:29px;margin:8px 0 12px}.eyebrow{color:#e6b85c;font-size:11px;font-weight:bold;letter-spacing:2px;margin:0}.muted{color:#9da7b3;line-height:1.5}.hero form{max-width:380px;margin:30px auto 0;text-align:left}.profile{display:flex;justify-content:space-between;align-items:center}.profile h1{margin:8px 0 2px;font-size:29px}.age{color:#e6b85c;font-size:48px;font-weight:bold;line-height:.8;text-align:right}.age small{display:block;color:#9da7b3;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-top:8px}.stats{margin-top:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#0f141b;padding:13px;border-radius:12px;min-height:76px}.stat span{color:#9da7b3;font-size:12px}.stat b{display:block;margin-top:7px;font-size:16px}.section-heading{display:flex;justify-content:space-between;align-items:baseline}.section-heading h2{font-size:18px;margin:0}.section-heading span{color:#9da7b3;font-size:12px}.events{max-height:340px;overflow:auto}.event{margin:14px 0 0;padding:12px;border-left:4px solid #e6b85c;background:#10161d;color:#d8dee5;line-height:1.4}label{display:block;margin:15px 0 6px;color:#c6ced8}input,select{width:100%;padding:12px;background:#0c1117;color:#fff;border:1px solid #394553;border-radius:10px;font-size:16px}button{width:100%;padding:14px;margin-top:12px;border:0;border-radius:11px;background:#e8edf3;color:#111820;font-weight:bold;font-size:15px;cursor:pointer}button:hover{background:#e6b85c}button span{font-size:20px;margin-left:6px}button.secondary{background:#28313c;color:#fff}button.secondary:hover{background:#394553}@media(max-width:520px){#app{padding:12px}.grid{grid-template-columns:1fr 1fr}.profile{align-items:flex-start}.profile h1{font-size:24px}.age{font-size:40px}}
+const simulatorData = {
+  marriage: {
+    bands: ["Traditional", "Civil", "Religious"],
+    advantages: ["Boosts happiness", "Unlocks inheritance", "Expands reputation"],
+    challenges: ["Financial strain", "Divorce risk", "Family disputes"]
+  },
+  government: {
+    roles: ["Councillor", "MP", "Governor", "President"],
+    advantages: ["Political influence", "Prestige", "Access to tenders"],
+    challenges: ["Corruption risk", "Election loss", "Public scrutiny"]
+  },
+  home: {
+    types: ["Bungalow", "Apartment", "Villa", "Mansion"],
+    advantages: ["Boosts happiness", "Inheritance value", "Prestige"],
+    challenges: ["Mortgage debt", "Maintenance costs", "Property disputes"]
+  },
+  religion: {
+    faiths: ["Christianity", "Islam", "Hinduism", "Traditional"],
+    advantages: ["Community support", "Moral reputation", "Ceremonial events"],
+    challenges: ["Sectarian conflict", "Religious obligations", "Restrictions"]
+  },
+  office: {
+    roles: ["Intern", "Employee", "Manager", "Director"],
+    advantages: ["Career progression", "Wealth growth", "Networking"],
+    challenges: ["Work stress", "Competition", "Job loss"]
+  },
+  corporateGovernance: {
+    roles: ["CEO", "Board Member", "Shareholder"],
+    advantages: ["Wealth accumulation", "Global influence", "Prestige"],
+    challenges: ["Market crashes", "Corporate rivalry", "Legal disputes"]
+  },
+  internationalRivalry: {
+    events: ["Trade wars", "Talent poaching", "Cultural exchanges"],
+    advantages: ["Boosts innovation", "Global prestige", "Cross‑border influence"],
+    challenges: ["Sanctions", "Diplomatic disputes", "Economic instability"]
+  },
+  education: {
+    stages: ["Primary", "High School", "College", "University", "Masters"],
+    advantages: ["Unlocks careers", "Boosts reputation", "Scholarship opportunities"],
+    challenges: ["Exam retakes", "Financial strain", "Dropout risk"]
+  }
+};
+
+// Render function
+function renderSimulator(data) {
+  const container = document.getElementById("simulator");
+  for (const [system, details] of Object.entries(data)) {
+    const section = document.createElement("div");
+    section.className = "section";
+    section.innerHTML = `<h2>${system.toUpperCase()}</h2>`;
+    for (const [key, value] of Object.entries(details)) {
+      section.innerHTML += `<strong>${key}:</strong> ${Array.isArray(value) ? value.join(", ") : value}<br>`;
+    }
+    container.appendChild(section);
+  }
+}
+
+renderSimulator(simulatorData);
