@@ -1,13 +1,721 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Life Simulator 🌍</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kenyan Life Simulator</title>
+
+    <meta
+        name="description"
+        content="Kenyan Life Simulator - Live a complete life in Kenya."
+    >
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/mobile.css">
 </head>
+
 <body>
-  <h1>Life Simulator Reference</h1>
-  <div id="simulator"></div>
-  <script src="game.js"></script>
-</body>
-</html>
+
+    <!-- =========================================
+         GAME APPLICATION
+    ========================================== -->
+
+    <div id="game">
+
+        <!-- =====================================
+             START SCREEN
+        ====================================== -->
+
+        <section id="start-screen" class="screen active">
+
+            <div class="start-container">
+
+                <div class="game-logo">
+                    <div class="logo-symbol">🇰🇪</div>
+
+                    <h1>KENYAN LIFE</h1>
+
+                    <p class="subtitle">
+                        Kenyan Life Simulator
+                    </p>
+                </div>
+
+                <div class="intro">
+
+                    <h2>Your life. Your choices. Your Kenya.</h2>
+
+                    <p>
+                        Start at birth and live your life through childhood,
+                        education, work, relationships, family, business,
+                        wealth, challenges, retirement and beyond.
+                    </p>
+
+                </div>
+
+                <div class="start-actions">
+
+                    <button
+                        id="create-life-btn"
+                        class="primary-btn"
+                        type="button"
+                    >
+                        🧑 Create My Life
+                    </button>
+
+                    <button
+                        id="random-life-btn"
+                        class="secondary-btn"
+                        type="button"
+                    >
+                        🎲 Random Kenyan Life
+                    </button>
+
+                    <button
+                        id="continue-btn"
+                        class="secondary-btn hidden"
+                        type="button"
+                    >
+                        ▶ Continue Life
+                    </button>
+
+                </div>
+
+                <p class="version">
+                    Version 1.0 • Kenya
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CHARACTER CREATION
+        ====================================== -->
+
+        <section id="creation-screen" class="screen">
+
+            <div class="creation-container">
+
+                <header class="screen-header">
+
+                    <button
+                        id="back-to-start"
+                        class="icon-btn"
+                        type="button"
+                    >
+                        ←
+                    </button>
+
+                    <div>
+                        <h2>Create Your Life</h2>
+                        <p>Choose how your life begins.</p>
+                    </div>
+
+                </header>
+
+
+                <!-- Creation Mode -->
+
+                <div class="creation-mode">
+
+                    <button
+                        id="custom-character"
+                        class="mode-card selected"
+                        type="button"
+                    >
+
+                        <span class="mode-icon">🧑</span>
+
+                        <strong>Create Myself</strong>
+
+                        <small>
+                            Choose your own starting details.
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        id="generated-character"
+                        class="mode-card"
+                        type="button"
+                    >
+
+                        <span class="mode-icon">🎲</span>
+
+                        <strong>Generate Everything</strong>
+
+                        <small>
+                            Let Kenya decide your beginning.
+                        </small>
+
+                    </button>
+
+                </div>
+
+
+                <!-- Character Form -->
+
+                <form id="character-form">
+
+                    <div class="form-section">
+
+                        <h3>Identity</h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="first-name">
+                                    First Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="first-name"
+                                    name="firstName"
+                                    placeholder="e.g. Julius"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="middle-name">
+                                    Middle Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="middle-name"
+                                    name="middleName"
+                                    placeholder="Optional"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="surname">
+                                    Surname
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="surname"
+                                    name="surname"
+                                    placeholder="e.g. Mburu"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="nickname">
+                                    Preferred Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nickname"
+                                    name="nickname"
+                                    placeholder="Optional"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Sex -->
+
+                    <div class="form-section">
+
+                        <h3>Sex</h3>
+
+                        <div class="choice-group">
+
+                            <label class="choice">
+
+                                <input
+                                    type="radio"
+                                    name="sex"
+                                    value="male"
+                                >
+
+                                <span>Male</span>
+
+                            </label>
+
+
+                            <label class="choice">
+
+                                <input
+                                    type="radio"
+                                    name="sex"
+                                    value="female"
+                                >
+
+                                <span>Female</span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Birth -->
+
+                    <div class="form-section">
+
+                        <h3>Birth</h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="birth-year">
+                                    Birth Year
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="birth-year"
+                                    name="birthYear"
+                                    min="1900"
+                                    max="2026"
+                                    value="2026"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="birth-month">
+                                    Birth Month
+                                </label>
+
+                                <select
+                                    id="birth-month"
+                                    name="birthMonth"
+                                >
+
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Location -->
+
+                    <div class="form-section">
+
+                        <h3>Birth Location</h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="county">
+                                    County
+                                </label>
+
+                                <select id="county" name="county">
+
+                                    <option value="">
+                                        Select County
+                                    </option>
+
+                                    <option>Nairobi</option>
+                                    <option>Mombasa</option>
+                                    <option>Kiambu</option>
+                                    <option>Nakuru</option>
+                                    <option>Kisumu</option>
+                                    <option>Uasin Gishu</option>
+                                    <option>Machakos</option>
+                                    <option>Nyeri</option>
+                                    <option>Meru</option>
+                                    <option>Turkana</option>
+                                    <option>Wajir</option>
+                                    <option>Garissa</option>
+
+                                    <!-- Full 47-county dataset
+                                         will be loaded dynamically later. -->
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="sub-county">
+                                    Sub-County
+                                </label>
+
+                                <select
+                                    id="sub-county"
+                                    name="subCounty"
+                                    disabled
+                                >
+
+                                    <option value="">
+                                        Select County First
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Household -->
+
+                    <div class="form-section">
+
+                        <h3>Starting Household</h3>
+
+                        <div class="household-options">
+
+                            <label class="choice">
+
+                                <input
+                                    type="radio"
+                                    name="household"
+                                    value="random"
+                                    checked
+                                >
+
+                                <span>
+                                    🎲 Generate My Household
+                                </span>
+
+                            </label>
+
+
+                            <label class="choice">
+
+                                <input
+                                    type="radio"
+                                    name="household"
+                                    value="two-parent"
+                                >
+
+                                <span>
+                                    👨‍👩‍👧 Two-parent household
+                                </span>
+
+                            </label>
+
+
+                            <label class="choice">
+
+                                <input
+                                    type="radio"
+                                    name="household"
+                                    value="single-parent"
+                                >
+
+                                <span>
+                                    👩‍👧 Single-parent household
+                                </span>
+
+                            </label>
+
+
+                            <label class="choice">
+
+                                <input
+                                    type="radio"
+                                    name="household"
+                                    value="extended-family"
+                                >
+
+                                <span>
+                                    👨‍👩‍👧‍👦 Extended family
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            id="start-life-btn"
+                            class="primary-btn large"
+                        >
+                            🚀 Start My Life
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             LIFE DASHBOARD
+        ====================================== -->
+
+        <section id="dashboard-screen" class="screen">
+
+            <!-- Top Bar -->
+
+            <header class="game-header">
+
+                <div class="player-summary">
+
+                    <div
+                        id="player-avatar"
+                        class="player-avatar"
+                    >
+                        🧑
+                    </div>
+
+                    <div>
+
+                        <h2 id="player-name">
+                            Player
+                        </h2>
+
+                        <p id="player-location">
+                            Kenya
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="age-display">
+
+                    <span>AGE</span>
+
+                    <strong id="player-age">
+                        0
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <!-- Main Dashboard -->
+
+            <main class="dashboard">
+
+                <!-- Personal Status -->
+
+                <section class="dashboard-section">
+
+                    <h3>Life Status</h3>
+
+                    <div class="status-grid">
+
+                        <div class="stat-card">
+
+                            <span>❤️ Health</span>
+
+                            <strong id="health-stat">
+                                100
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <span>🧠 Education</span>
+
+                            <strong id="education-stat">
+                                None
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <span>💼 Career</span>
+
+                            <strong id="career-stat">
+                                None
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <span>💰 Money</span>
+
+                            <strong id="money-stat">
+                                KSh 0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Location -->
+
+                <section class="dashboard-section">
+
+                    <h3>📍 Location</h3>
+
+                    <div class="location-card">
+
+                        <p>
+                            <strong>County:</strong>
+                            <span id="dash-county">
+                                —
+                            </span>
+                        </p>
+
+                        <p>
+                            <strong>Sub-County:</strong>
+                            <span id="dash-subcounty">
+                                —
+                            </span>
+                        </p>
+
+                        <p>
+                            <strong>Location:</strong>
+                            <span id="dash-location">
+                                —
+                            </span>
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Family -->
+
+                <section class="dashboard-section">
+
+                    <h3>👨‍👩‍👧 Family</h3>
+
+                    <div id="family-list" class="family-list">
+
+                        <p>
+                            Your family will appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Assets -->
+
+                <section class="dashboard-section">
+
+                    <h3>🏠 Assets & Wealth</h3>
+
+                    <div class="status-grid">
+
+                        <div class="stat-card">
+
+                            <span>💵 Cash</span>
+
+                            <strong id="cash-stat">
+                                KSh 0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <span>🏦 Bank</span>
+
+                            <strong id="bank-stat">
+                                KSh 0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <span>🏠 Assets</span>
+
+                            <strong id="assets-stat">
+                                KSh 0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <span>📊 Net Worth</span>
+
+                            <strong id="networth-stat">
+                                KSh 0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Current Event -->
+
+                <section class="dashboard-section event-section">
+
+                    <h3>📖 Current Life Event</h3>
+
+                    <div
+                        id="event-container"
+                        class="event-card"
+                    >
+
+                        <h4 id="event-title">
+                       
